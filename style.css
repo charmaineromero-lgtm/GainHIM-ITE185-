@@ -1,0 +1,166 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Background with image */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* Cozy blurred overlay */
+    background: 
+        /*linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),*/
+        url('bg_casestudy.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+}
+
+/* Logo styling */
+.logo {
+    width: 120px;          /* increase width for wide logos */
+    height: auto;          /* keep natural aspect ratio */
+    object-fit: contain;   /* show whole logo without cropping */
+    display: block;
+    margin: 0 auto 20px;
+}
+
+
+
+/* Auth form container */
+.auth-container {
+    background: rgba(255, 255, 255, 0.8); /* soft white with transparency */
+    backdrop-filter: blur(10px);
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Heading */
+.auth-container h2 {
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Inputs */
+.auth-container input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Button */
+.auth-container button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff8c42;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.auth-container button:hover {
+    background-color: #e5772d;
+}
+
+/* Links */
+.auth-container .auth-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.auth-container .auth-link a {
+    color: #ff8c42;
+    text-decoration: none;
+}
+
+.auth-container .auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* Messages */
+.message {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.message.error {
+    color: #d9534f;
+}
+
+.message.success {
+    color: #5cb85c;
+}
+/* ----------------------------- */
+/* GLOBAL PAGE POP TRANSITION    */
+/* ----------------------------- */
+
+/* Before page fully loads */
+body {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* When page is ready */
+body.page-loaded {
+    opacity: 1;
+}
+
+/* Pop-in effect for auth card */
+.auth-container {
+    opacity: 0;
+    transform: scale(0.85);
+    filter: blur(4px);
+    animation: popIn 0.45s ease forwards;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+        filter: blur(4px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Pop-out transition when leaving page */
+body.pop-out .auth-container {
+    animation: popOut 0.35s ease forwards;
+}
+
+@keyframes popOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.7);
+        filter: blur(5px);
+    }
+}
+
